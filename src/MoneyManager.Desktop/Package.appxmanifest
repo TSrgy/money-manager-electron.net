@@ -4,17 +4,18 @@
   xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
   xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest"
   xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
-  IgnorableNamespaces="uap mp">
+  xmlns:genTemplate="http://schemas.microsoft.com/appx/developer/windowsTemplateStudio"
+  IgnorableNamespaces="uap mp genTemplate">
 
   <Identity
-    Name="75f6e213-448e-4ff5-a3bc-1e0168f759c5"
+    Name="74D35D8D-DF97-47D6-B978-9276D36A25A7"
     Publisher="CN=Sergey"
     Version="1.0.0.0" />
 
-  <mp:PhoneIdentity PhoneProductId="75f6e213-448e-4ff5-a3bc-1e0168f759c5" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+  <mp:PhoneIdentity PhoneProductId="74D35D8D-DF97-47D6-B978-9276D36A25A7" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
-    <DisplayName>MoneyManagerApp</DisplayName>
+    <DisplayName>MoneyManager.Desktop</DisplayName>
     <PublisherDisplayName>Sergey</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
@@ -30,20 +31,32 @@
   <Applications>
     <Application Id="App"
       Executable="$targetnametoken$.exe"
-      EntryPoint="MoneyManagerApp.App">
+      EntryPoint="MoneyManager.Desktop.App">
       <uap:VisualElements
-        DisplayName="MoneyManagerApp"
+        DisplayName="ms-resource:AppDisplayName"
         Square150x150Logo="Assets\Square150x150Logo.png"
         Square44x44Logo="Assets\Square44x44Logo.png"
-        Description="MoneyManagerApp"
+        Description="ms-resource:AppDescription"
         BackgroundColor="transparent">
         <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png"/>
         <uap:SplashScreen Image="Assets\SplashScreen.png" />
       </uap:VisualElements>
+
+      <Extensions>
+      </Extensions>
     </Application>
   </Applications>
 
   <Capabilities>
     <Capability Name="internetClient" />
   </Capabilities>
+
+  <genTemplate:Metadata>
+    <genTemplate:Item Name="generator" Value="Windows Template Studio"/>
+    <genTemplate:Item Name="wizardVersion" Version="v3.8.20273.1" />
+    <genTemplate:Item Name="templatesVersion" Version="v3.8.20273.1" />
+    <genTemplate:Item Name="projectType" Value="SplitView" />
+    <genTemplate:Item Name="framework" Value="MVVMLight" />
+    <genTemplate:Item Name="platform" Value="Uwp" />
+  </genTemplate:Metadata>
 </Package>

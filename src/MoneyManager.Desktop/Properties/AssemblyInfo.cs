@@ -1,28 +1,29 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-// Общие сведения о сборке можно задать с помощью следующего 
-// атрибутов. Отредактируйте значения этих атрибутов, чтобы изменить
-// сведений о сборке.
-[assembly: AssemblyTitle("MoneyManagerApp")]
+// General Information about an assembly is controlled through the following
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+[assembly: AssemblyTitle("MoneyManager.Desktop")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("MoneyManagerApp")]
+[assembly: AssemblyProduct("MoneyManager.Desktop")]
 [assembly: AssemblyCopyright("Copyright ©  2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
-// Сведения о версии сборки состоят из следующих четырех значений:
+// Version information for an assembly consists of the following four values:
 //
-//      Основной номер версии
-//      Дополнительный номер версии 
-//   Номер сборки
-//      Редакция
+//      Major Version
+//      Minor Version
+//      Build Number
+//      Revision
 //
-// Можно задать все значения или принять номера сборки и редакции по умолчанию 
-// используя "*", как показано ниже:
+// You can specify all the values or you can default the Build and Revision Numbers
+// by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
