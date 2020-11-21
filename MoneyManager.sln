@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30717.126
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoneyManagerApp", "src\MoneyManagerApp\MoneyManagerApp.csproj", "{4A1FAE4C-6399-4378-BE4C-CC9F362AD082}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoneyManager.Desktop", "src\MoneyManager.Desktop\MoneyManager.Desktop.csproj", "{4A1FAE4C-6399-4378-BE4C-CC9F362AD082}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
