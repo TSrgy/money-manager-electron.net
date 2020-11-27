@@ -6,12 +6,35 @@
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="MoneyManager.DesktopApp.Views.MainWindow"
         Icon="/Assets/avalonia-logo.ico"
-        Title="MoneyManager.DesktopApp">
+        Title="Money Manager">
 
     <Design.DataContext>
         <vm:MainWindowViewModel/>
     </Design.DataContext>
 
-    <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+	<StackPanel Orientation="Vertical">
+		<DockPanel>
+			<Menu DockPanel.Dock="Top">
+				<MenuItem Header="_File">
+					<MenuItem Header="_Open..."/>
+					<Separator/>
+					<MenuItem Header="_Exit"/>
+				</MenuItem>
+				<MenuItem Header="Help">
+					
+				</MenuItem>
+			</Menu>
+		</DockPanel>
+		<Panel>
+			<StackPanel Orientation="Horizontal">
+				<ListBox>
+					<ListBoxItem Content="Hi"></ListBoxItem>
+				</ListBox>
+			</StackPanel>
+		</Panel>
+	</StackPanel>
+
+	<!--<TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>-->
+
 
 </Window>
