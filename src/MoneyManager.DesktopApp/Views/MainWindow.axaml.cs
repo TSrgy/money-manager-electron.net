@@ -17,6 +17,7 @@ namespace MoneyManager.DesktopApp.Views
         private void InitializeComponent()
         {
             AvaloniaXamlLoader.Load(this);
+            
         }
     }
 }

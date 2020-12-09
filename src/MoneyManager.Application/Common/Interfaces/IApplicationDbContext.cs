@@ -8,6 +8,7 @@ namespace MoneyManager.Application.Common.Interfaces
     public interface IApplicationDbContext
     {
         DbSet<Account> Accounts { get; set; }
+        DbSet<Asset> Assets { get; set; }
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
     }
 }

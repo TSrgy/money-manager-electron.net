@@ -1,0 +1,46 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="300" d:DesignHeight="400"
+        x:Class="MoneyManager.DesktopApp.Views.Assets.AssetCreationWindow"
+        Title="AssetCreationWindow"
+		HasSystemDecorations="False"
+		Width="300" Height="400"
+		WindowStartupLocation="CenterOwner"
+		
+		CanResize="False"
+		UseLayoutRounding="True">
+	<DockPanel>
+		<DockPanel Name="TitleBar" DockPanel.Dock="Top" HorizontalAlignment="Stretch">
+			<TextBlock VerticalAlignment="Center" Margin="5,0,0,0">Title</TextBlock>
+		</DockPanel>
+
+		<Border Classes="Card">
+			<!--<Grid ColumnDefinitions="*,*"
+		  RowDefinitions="*,100">
+			<StackPanel Grid.Column="0"
+						Grid.ColumnSpan="2"
+						Orientation="Vertical"
+						DockPanel.Dock="Top">
+				<TextBlock Text="Name:"/>
+				<TextBox Text="{Binding Name}"/>
+			</StackPanel>
+			<Button Grid.Column="1"
+					Grid.Row="1">Create</Button>
+		</Grid>-->
+			<DockPanel LastChildFill="False">
+				<StackPanel DockPanel.Dock="Top">
+					<TextBlock Text="Name:"/>
+					<TextBox Name="NameTextBox"/>
+				</StackPanel>
+				<Panel>
+
+				</Panel>
+				<Button Name="SaveButton" DockPanel.Dock="Bottom">Create</Button>
+			</DockPanel>
+		</Border>
+	</DockPanel>
+
+
+</Window>

@@ -16,11 +16,15 @@ namespace MoneyManager.Infrastructure.Persistence
     {
         private readonly IDateTime _dateTime;
 
-        public DbSet<Account> Accounts { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public DbSet<Account> Accounts { get; set; }
+        public DbSet<Asset> Assets { get; set; }
 
-        public ApplicationDbContext()
+        public ApplicationDbContext(
+            DbContextOptions options,
+            IDateTime dateTime) : base(options)
         {
             Database.EnsureCreated();
+            _dateTime = dateTime;
         }
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
