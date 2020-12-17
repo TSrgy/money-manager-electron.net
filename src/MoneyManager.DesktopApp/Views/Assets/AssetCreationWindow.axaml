@@ -5,7 +5,7 @@
         mc:Ignorable="d" d:DesignWidth="300" d:DesignHeight="400"
         x:Class="MoneyManager.DesktopApp.Views.Assets.AssetCreationWindow"
         Title="AssetCreationWindow"
-		HasSystemDecorations="False"
+		HasSystemDecorations="True"
 		Width="300" Height="400"
 		WindowStartupLocation="CenterOwner"
 		
@@ -15,7 +15,6 @@
 		<DockPanel Name="TitleBar" DockPanel.Dock="Top" HorizontalAlignment="Stretch">
 			<TextBlock VerticalAlignment="Center" Margin="5,0,0,0">Title</TextBlock>
 		</DockPanel>
-
 		<Border Classes="Card">
 			<!--<Grid ColumnDefinitions="*,*"
 		  RowDefinitions="*,100">
@@ -33,6 +32,12 @@
 				<StackPanel DockPanel.Dock="Top">
 					<TextBlock Text="Name:"/>
 					<TextBox Name="NameTextBox"/>
+					<TextBlock Text="Date:"/>
+					<DatePicker Name="DatePicker"/>
+					<TextBlock Text="Value:"/>
+					<NumericUpDown Name="ValueNumericUpDown" Increment="0.01"></NumericUpDown>
+					<TextBlock Text="Notes:"/>
+					<TextBox Name="NotesTextBox" TextWrapping="Wrap"></TextBox>
 				</StackPanel>
 				<Panel>
 

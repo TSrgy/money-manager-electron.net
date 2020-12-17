@@ -12,5 +12,8 @@
 		<StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
 			<Button Name="createAssetButton">New</Button>
 		</StackPanel>
+		<DataGrid>
+			
+		</DataGrid>
 	</DockPanel>
 </UserControl>

@@ -12,6 +12,9 @@ namespace MoneyManager.Application.Assets.Commands.CreateAsset
     public class CreateAssetCommand : IRequest<long>
     {
         public string Name { get; set; }
+        public DateTime Date { get; set; }
+        public decimal Value { get; set; }
+        public string Notes { get; set; }
         public class CreateAssetCommandHandler : IRequestHandler<CreateAssetCommand, long>
         {
             private readonly IApplicationDbContext _context;
@@ -23,7 +26,10 @@ namespace MoneyManager.Application.Assets.Commands.CreateAsset
             {
                 var entity = new Asset
                 {
-                    Name = request.Name
+                    Name = request.Name,
+                    StartDate = request.Date,
+                    Value = request.Value,
+                    Notes = request.Notes
                 };
 
                 _context.Assets.Add(entity);

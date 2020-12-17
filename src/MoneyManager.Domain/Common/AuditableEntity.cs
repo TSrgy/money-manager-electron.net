@@ -6,8 +6,8 @@ namespace MoneyManager.Domain.Common
 {
     public abstract class AuditableEntity
     {
-        public DateTime Created { get; set; }
+        public DateTimeOffset Created { get; set; }
 
-        public DateTime? LastModified { get; set; }
+        public DateTimeOffset? LastModified { get; set; }
     }
 }

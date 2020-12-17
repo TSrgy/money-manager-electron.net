@@ -21,8 +21,8 @@ namespace MoneyManager.DesktopApp.ViewModels.Assets
             OpenCreateAssetDialog = ReactiveCommand.Create(() =>
             {
                 var window = new AssetCreationWindow();
-                window.ShowDialog(GetWindow());
-            }, Observable.Return(true));
+                window.ShowDialog<long>(GetWindow());
+            });
             //Items = new DataGridCollectionView();
         }
 
