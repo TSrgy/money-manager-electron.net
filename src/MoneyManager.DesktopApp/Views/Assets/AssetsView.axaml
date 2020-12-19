@@ -12,8 +12,10 @@
 		<StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
 			<Button Name="createAssetButton">New</Button>
 		</StackPanel>
-		<DataGrid>
-			
+		<DataGrid Name="assetsDataGrid" IsReadOnly="True">
+			<DataGrid.Columns>
+				<DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="6*" />
+			</DataGrid.Columns>
 		</DataGrid>
 	</DockPanel>
 </UserControl>

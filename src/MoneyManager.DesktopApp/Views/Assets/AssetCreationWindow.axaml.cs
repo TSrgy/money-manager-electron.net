@@ -5,6 +5,7 @@ using Avalonia.ReactiveUI;
 using MoneyManager.DesktopApp.ViewModels.Assets;
 using ReactiveUI;
 using System;
+using System.Reactive.Disposables;
 
 namespace MoneyManager.DesktopApp.Views.Assets
 {
@@ -28,29 +29,35 @@ namespace MoneyManager.DesktopApp.Views.Assets
         {
             this.WhenActivated(disposables =>
             {
-                ViewModel.Save.Subscribe(x => Close(x));
+                ViewModel.Save.Subscribe(id => Close(id))
+                .DisposeWith(disposables);
 
                 this.BindCommand(ViewModel,
-                   vm => vm.Save,
-                   v => v.SaveButton);
+                    vm => vm.Save,
+                    v => v.SaveButton)
+                .DisposeWith(disposables);
 
                 this.Bind(ViewModel,
-                  vm => vm.Name,
-                  v => v.NameTextBox.Text);
+                    vm => vm.Name,
+                    v => v.NameTextBox.Text)
+                .DisposeWith(disposables);
 
                 this.Bind(ViewModel,
                     vm => vm.Date,
-                    v => v.DatePicker.SelectedDate);
+                    v => v.DatePicker.SelectedDate)
+                .DisposeWith(disposables);
 
                 this.Bind(ViewModel,
                     vm => vm.Value,
                     v => v.ValueNumericUpDown.Value,
                     value => Convert.ToDouble(value),
-                    value => Convert.ToDecimal(value));
+                    value => Convert.ToDecimal(value))
+                .DisposeWith(disposables);
 
                 this.Bind(ViewModel,
                     vm => vm.Notes,
-                    v => v.NotesTextBox.Text);
+                    v => v.NotesTextBox.Text)
+                .DisposeWith(disposables);
             });
            
 

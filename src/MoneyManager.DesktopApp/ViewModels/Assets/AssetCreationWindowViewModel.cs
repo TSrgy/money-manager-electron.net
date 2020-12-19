@@ -9,8 +9,6 @@ namespace MoneyManager.DesktopApp.ViewModels.Assets
 {
     public class AssetCreationWindowViewModel : ViewModelBase
     {
-        private IMediator _mediator;
-
         private string _name;
         private DateTime _date;
         private string _notes;
@@ -25,11 +23,10 @@ namespace MoneyManager.DesktopApp.ViewModels.Assets
         {
             _date = DateTime.Now;
             _name = string.Empty;
-            var container = Locator.Current.GetService<IContainer>();
-            _mediator = mediator ?? container.Resolve<IMediator>();
+
             Save = ReactiveCommand.CreateFromTask(() =>
             {
-                return _mediator.Send(new CreateAssetCommand()
+                return Mediator.Send(new CreateAssetCommand()
                 {
                     Name = _name,
                     Date = _date,
