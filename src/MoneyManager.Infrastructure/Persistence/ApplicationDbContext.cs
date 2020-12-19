@@ -23,7 +23,7 @@ namespace MoneyManager.Infrastructure.Persistence
             DbContextOptions options,
             IDateTime dateTime) : base(options)
         {
-            Database.EnsureCreated();
+            //Database.EnsureCreated();
             _dateTime = dateTime;
         }
 
@@ -50,13 +50,6 @@ namespace MoneyManager.Infrastructure.Persistence
             builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
 
             base.OnModelCreating(builder);
-        }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlite("Filename=Mobile.db", optionsBuilder =>
-            {
-            });
         }
     }
 }

@@ -1,7 +1,9 @@
 ﻿using Autofac;
 using Avalonia.Controls;
+using Microsoft.EntityFrameworkCore;
 using MoneyManager.Application;
 using MoneyManager.Infrastructure;
+using MoneyManager.Infrastructure.Persistence;
 using Splat;
 using System.Reflection;
 
@@ -20,6 +22,9 @@ namespace MoneyManager.DesktopApp
 
             var container = containerBuilder.Build();
             Locator.CurrentMutable.RegisterConstant(container);
+
+            var context = container.Resolve<ApplicationDbContext>();
+            context.Database.Migrate();
 
             return builder;
         }

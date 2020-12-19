@@ -12,7 +12,7 @@ namespace MoneyManager.Infrastructure
         {
             var builder = new DbContextOptionsBuilder<ApplicationDbContext>();
 
-            builder.UseSqlite();
+            builder.UseSqlite("Filename=test.db");
 
             return builder.Options;
         }
@@ -21,7 +21,8 @@ namespace MoneyManager.Infrastructure
             builder.RegisterType<ApplicationDbContext>()
                 .WithParameter("options", GetDbContextOptions())
                 .InstancePerLifetimeScope()
-             .AsImplementedInterfaces();
+                .AsSelf()
+                .AsImplementedInterfaces();
 
             //if (environment.IsEnvironment("Test"))
             //{
@@ -56,7 +57,7 @@ namespace MoneyManager.Infrastructure
                 .InstancePerDependency();
             //}
 
-         
+
         }
     }
 }

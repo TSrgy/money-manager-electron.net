@@ -15,7 +15,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MoneyManager.Infrastructure
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{3F3F7303-F364-41D8-8B9B-F4A499411056}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoneyManager.DesktopApp", "src\MoneyManager.DesktopApp\MoneyManager.DesktopApp.csproj", "{F65C215F-F349-4057-AFAF-0436554A1E73}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MoneyManager.DesktopApp", "src\MoneyManager.DesktopApp\MoneyManager.DesktopApp.csproj", "{F65C215F-F349-4057-AFAF-0436554A1E73}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6A5B5C04-1721-4655-B832-3F9179834247}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
