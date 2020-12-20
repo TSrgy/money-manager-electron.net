@@ -30,6 +30,7 @@ namespace MoneyManager.DesktopApp.ViewModels
             {
                 Children =
                 {
+                    new TreeNode("Bank Accounts"),
                     new TreeNode("Assets")
                 }
             };

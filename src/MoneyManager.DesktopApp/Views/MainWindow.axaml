@@ -44,15 +44,6 @@
 
 			</Border>
 		</DockPanel>
-
-		<!--<TabControl TabStripPlacement="Left" >
-			<TabItem Header="Assets">
-				<uc:AssetsView/>
-			</TabItem>
-			<TabItem Header="Assets">
-				<uc:AssetsView/>
-			</TabItem>
-		</TabControl>-->
 	</DockPanel>
 
 
