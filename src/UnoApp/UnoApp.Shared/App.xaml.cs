@@ -35,6 +35,13 @@ namespace UnoApp
             this.Suspending += OnSuspending;
         }
 
+#if __IOS__ ||  __MACOS__
+        private void InitializeComponent()
+        {
+            throw new NotImplementedException();
+        }
+#endif
+
         /// <summary>
         /// Invoked when the application is launched normally by the end user.  Other entry points
         /// will be used such as when the application is launched to open a specific file.
