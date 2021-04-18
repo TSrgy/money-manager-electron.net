@@ -1,7 +1,7 @@
 import "./App.css";
 
 import { Breadcrumb, Layout, Menu } from "antd";
-import { DesktopOutlined, FileOutlined, PieChartOutlined, TeamOutlined, UserOutlined } from "@ant-design/icons";
+import { DesktopOutlined, FileOutlined, FolderOutlined, TeamOutlined, UserOutlined } from "@ant-design/icons";
 
 import React from "react";
 
@@ -36,7 +36,7 @@ class App extends React.Component<IProps, IState> {
                 <Sider collapsible collapsed={collapsed} onCollapse={this.onCollapse}>
                     <div className="logo" />
                     <Menu theme="dark" defaultSelectedKeys={["1"]} mode="inline">
-                        <Menu.Item key="1" icon={<PieChartOutlined />}>
+                        <Menu.Item key="accounts" icon={<FolderOutlined />}>
                             Option 1
                         </Menu.Item>
                         <Menu.Item key="2" icon={<DesktopOutlined />}>
