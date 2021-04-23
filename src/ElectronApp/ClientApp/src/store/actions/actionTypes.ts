@@ -1,0 +1,1 @@
+export const ACCOUNT_SELECTED = "ACCOUNT_SELECTED"
