@@ -6,20 +6,20 @@ namespace MoneyManager.Domain.Entities
 {
     public class Transaction
     {
-        public long Id { get; set; }
-        public Account FromAccount { get; set; }
-        public Account ToAccount { get; set; }
-        public Payee Payee { get; set; }
-        public TransactionCode Code { get; set; }
-        public decimal Amount { get; set; }
-        public TransactionStatus Status { get; set; }
-        public string Number { get; set; }
+        public long Id { get; private set; }
+        public Account FromAccount { get; private set; }
+        public Account ToAccount { get; private set; }
+        public Payee Payee { get; private set; }
+        public TransactionCode Code { get; private set; }
+        public decimal Amount { get; private set; }
+        public TransactionStatus Status { get; private set; }
+        public string Number { get; private set; }
         public string Notes { get; set; }
-        public Category Category { get; set; }
-        public Subcategory Subcategory { get; set; }
-        public DateTime Date { get; set; }
-        public int FollowUpId { get; set; }
-        public decimal ToTransAmount { get; set; }
+        public Category Category { get; private set; }
+        public Subcategory Subcategory { get; private set; }
+        public DateTime Date { get; private set; }
+        public int FollowUpId { get; private set; }
+        public decimal ToTransAmount { get; private set; }
     }
 
     public enum TransactionCode
