@@ -12,16 +12,22 @@ namespace MoneyManager.Application.Assets.Commands.CreateAsset
     public class CreateAssetCommand : IRequest<long>
     {
         public string Name { get; set; }
+
         public DateTime Date { get; set; }
+
         public decimal Value { get; set; }
+
         public string Notes { get; set; }
+
         public class CreateAssetCommandHandler : IRequestHandler<CreateAssetCommand, long>
         {
             private readonly IApplicationDbContext _context;
+
             public CreateAssetCommandHandler(IApplicationDbContext context)
             {
                 _context = context;
             }
+
             public async Task<long> Handle(CreateAssetCommand request, CancellationToken cancellationToken)
             {
                 var entity = new Asset

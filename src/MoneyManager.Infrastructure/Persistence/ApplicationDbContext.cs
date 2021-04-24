@@ -17,6 +17,7 @@ namespace MoneyManager.Infrastructure.Persistence
         private readonly IDateTime _dateTime;
 
         public DbSet<Account> Accounts { get; set; }
+
         public DbSet<Asset> Assets { get; set; }
 
         public ApplicationDbContext(

@@ -12,7 +12,7 @@ namespace MoneyManager.Application
         protected override void Load(ContainerBuilder builder)
         {
             builder.RegisterMediatR(Assembly.GetExecutingAssembly(),
-                typeof(RequestPerformanceBehaviour<,>), 
+                typeof(RequestPerformanceBehaviour<,>),
                 typeof(RequestValidationBehavior<,>));
 
             builder.RegisterAutoMapper(Assembly.GetExecutingAssembly());

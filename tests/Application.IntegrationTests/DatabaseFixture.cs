@@ -77,7 +77,7 @@ namespace Application.IntegrationTests
             context.Database.Migrate();
 
             return connection;
-        }       
+        }
 
         public async Task<TResponse> SendAsync<TResponse>(IRequest<TResponse> request)
         {

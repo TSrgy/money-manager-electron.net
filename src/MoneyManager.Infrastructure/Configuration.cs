@@ -11,6 +11,7 @@ namespace MoneyManager.Infrastructure
     public class Configuration
     {
         public string ConnectionString { get; }
+
         public Configuration(IConfiguration configuration)
         {
             ConnectionString = configuration.GetConnectionString("DefaultConnection");
