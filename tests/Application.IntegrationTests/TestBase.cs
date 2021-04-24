@@ -2,7 +2,6 @@ using Xunit;
 
 namespace Application.IntegrationTests
 {
-
     [Collection("Database collection")]
     public abstract class TestBase
     {

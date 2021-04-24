@@ -1,7 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
-using MoneyManager.Domain.Entities;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using MoneyManager.Domain.Entities;
 
 namespace MoneyManager.Application.Common.Interfaces
 {

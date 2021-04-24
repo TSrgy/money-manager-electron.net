@@ -1,16 +1,16 @@
-﻿using MoneyManager.Infrastructure.Persistence;
-using ElectronApp;
-using MediatR;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Moq;
-using System;
+﻿using System;
 using System.IO;
 using System.Threading.Tasks;
 using Autofac.Extensions.DependencyInjection;
+using ElectronApp;
+using MediatR;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.Data.Sqlite;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using MoneyManager.Infrastructure.Persistence;
+using Moq;
 
 namespace Application.IntegrationTests
 {
@@ -54,31 +54,6 @@ namespace Application.IntegrationTests
             SaveDB(_mainDbConnection);
         }
 
-        private static IServiceProvider CreateAutofacServiceProvider(Startup startup, ServiceCollection services)
-        {
-            var autofactSPFactory = new AutofacServiceProviderFactory();
-
-            var builder = autofactSPFactory.CreateBuilder(services);
-            startup.ConfigureContainer(builder);
-
-            var serviceProvider = autofactSPFactory.CreateServiceProvider(builder);
-            return serviceProvider;
-        }
-
-        private SqliteConnection OpenConnectionAndEnsureDatabase()
-        {
-            using var scope = _scopeFactory.CreateScope();
-
-            var context = scope.ServiceProvider.GetService<ApplicationDbContext>();
-
-            var connection = new SqliteConnection(context.Database.GetConnectionString());
-            connection.Open();
-
-            context.Database.Migrate();
-
-            return connection;
-        }
-
         public async Task<TResponse> SendAsync<TResponse>(IRequest<TResponse> request)
         {
             using var scope = _scopeFactory.CreateScope();
@@ -116,13 +91,31 @@ namespace Application.IntegrationTests
             await context.SaveChangesAsync();
         }
 
-        public async Task<int> CountAsync<TEntity>() where TEntity : class
+        public async Task<int> CountAsync<TEntity>()
+            where TEntity : class
         {
             using var scope = _scopeFactory.CreateScope();
 
             var context = scope.ServiceProvider.GetService<ApplicationDbContext>();
 
             return await context.Set<TEntity>().CountAsync();
+        }
+
+        public void Dispose()
+        {
+            _cleanDbConnection.Dispose();
+            _mainDbConnection.Dispose();
+        }
+
+        private static IServiceProvider CreateAutofacServiceProvider(Startup startup, ServiceCollection services)
+        {
+            var autofactSPFactory = new AutofacServiceProviderFactory();
+
+            var builder = autofactSPFactory.CreateBuilder(services);
+            startup.ConfigureContainer(builder);
+
+            var serviceProvider = autofactSPFactory.CreateServiceProvider(builder);
+            return serviceProvider;
         }
 
         private void SaveDB(SqliteConnection srcConnection)
@@ -135,10 +128,18 @@ namespace Application.IntegrationTests
             _cleanDbConnection.BackupDatabase(destConnection);
         }
 
-        public void Dispose()
+        private SqliteConnection OpenConnectionAndEnsureDatabase()
         {
-            _cleanDbConnection.Dispose();
-            _mainDbConnection.Dispose();
+            using var scope = _scopeFactory.CreateScope();
+
+            var context = scope.ServiceProvider.GetService<ApplicationDbContext>();
+
+            var connection = new SqliteConnection(context.Database.GetConnectionString());
+            connection.Open();
+
+            context.Database.Migrate();
+
+            return connection;
         }
     }
 }

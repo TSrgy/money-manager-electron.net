@@ -8,16 +8,6 @@ namespace MoneyManager.Infrastructure
 {
     public class InfrastructureModule : Module
     {
-        private DbContextOptions GetDbContextOptions(string connectionString)
-        {
-            var builder = new DbContextOptionsBuilder<ApplicationDbContext>();
-
-            //builder.UseSqlite("Filename=test.db");
-            builder.UseSqlite(connectionString);
-
-            return builder.Options;
-        }
-
         protected override void Load(ContainerBuilder builder)
         {
             builder.RegisterType<Configuration>()
@@ -36,6 +26,15 @@ namespace MoneyManager.Infrastructure
             builder.RegisterType<DateTimeService>()
                 .As<IDateTime>()
                 .InstancePerDependency();
+        }
+
+        private DbContextOptions GetDbContextOptions(string connectionString)
+        {
+            var builder = new DbContextOptionsBuilder<ApplicationDbContext>();
+
+            builder.UseSqlite(connectionString);
+
+            return builder.Options;
         }
     }
 }

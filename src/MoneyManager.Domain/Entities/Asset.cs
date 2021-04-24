@@ -1,7 +1,7 @@
-﻿using MoneyManager.Domain.Common;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using MoneyManager.Domain.Common;
 
 namespace MoneyManager.Domain.Entities
 {
@@ -21,7 +21,7 @@ namespace MoneyManager.Domain.Entities
 
         public decimal ValueChangeRate { get; private set; }
 
-        public string  Notes { get; set; }
+        public string Notes { get; set; }
     }
 
     public enum AssetType

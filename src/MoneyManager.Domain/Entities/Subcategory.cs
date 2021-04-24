@@ -1,7 +1,7 @@
-﻿using MoneyManager.Domain.Common;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using MoneyManager.Domain.Common;
 
 namespace MoneyManager.Domain.Entities
 {

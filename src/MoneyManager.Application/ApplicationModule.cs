@@ -1,9 +1,9 @@
-﻿using Autofac;
+﻿using System.Reflection;
+using Autofac;
 using AutoMapper.Contrib.Autofac.DependencyInjection;
 using MediatR;
 using MediatR.Extensions.Autofac.DependencyInjection;
 using MoneyManager.Application.Common.Behaviours;
-using System.Reflection;
 
 namespace MoneyManager.Application
 {
@@ -11,7 +11,8 @@ namespace MoneyManager.Application
     {
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterMediatR(Assembly.GetExecutingAssembly(),
+            builder.RegisterMediatR(
+                Assembly.GetExecutingAssembly(),
                 typeof(RequestPerformanceBehaviour<,>),
                 typeof(RequestValidationBehavior<,>));
 

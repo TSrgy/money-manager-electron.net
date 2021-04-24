@@ -1,5 +1,5 @@
-﻿using MoneyManager.Domain.Common;
-using System;
+﻿using System;
+using MoneyManager.Domain.Common;
 
 namespace MoneyManager.Domain.Entities
 {
@@ -24,7 +24,7 @@ namespace MoneyManager.Domain.Entities
         #region Others
 
         /// <summary>
-        /// Account number
+        /// Account number.
         /// </summary>
         public string Number { get; private set; }
 
@@ -38,17 +38,17 @@ namespace MoneyManager.Domain.Entities
         #region Statement
 
         /// <summary>
-        /// Enable/disable transaction lock
+        /// Enable/disable transaction lock.
         /// </summary>
         public bool StatementLocked { get; private set; }
 
         /// <summary>
-        /// Date of the transaction lock
+        /// Date of the transaction lock.
         /// </summary>
         public DateTime StatementDate { get; private set; }
 
         /// <summary>
-        /// Account balance lower limit. Zero to disable
+        /// Account balance lower limit. Zero to disable.
         /// </summary>
         public decimal MinBalance { get; private set; }
         #endregion
@@ -56,13 +56,13 @@ namespace MoneyManager.Domain.Entities
         #region Credit
 
         /// <summary>
-        /// Zero to disable
+        /// Zero to disable.
         /// </summary>
         public decimal CreditLimit { get; private set; }
 
-        public decimal InterestRate { get; private set; } //TODO What is it
+        public decimal InterestRate { get; private set; } // TODO What is it
 
-        public DateTime PaymentDueDate { get; private set; } //TODO What is it
+        public DateTime PaymentDueDate { get; private set; } // TODO What is it
 
         public decimal MinPayment { get; private set; }
         #endregion
