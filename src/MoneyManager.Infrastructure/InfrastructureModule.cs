@@ -8,18 +8,26 @@ namespace MoneyManager.Infrastructure
 {
     public class InfrastructureModule : Module
     {
-        private DbContextOptions GetDbContextOptions()
+        private DbContextOptions GetDbContextOptions(string connectionString)
         {
             var builder = new DbContextOptionsBuilder<ApplicationDbContext>();
 
-            builder.UseSqlite("Filename=test.db");
+            //builder.UseSqlite("Filename=test.db");
+            builder.UseSqlite(connectionString);
 
             return builder.Options;
         }
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterType<ApplicationDbContext>()
-                .WithParameter("options", GetDbContextOptions())
+            builder.RegisterType<Configuration>()
+                .InstancePerLifetimeScope();
+
+            builder.Register(serviceProvider =>
+            {
+                var configuration = serviceProvider.Resolve<Configuration>();
+                var dateTime = serviceProvider.Resolve<IDateTime>();
+                return new ApplicationDbContext(GetDbContextOptions(configuration.ConnectionString), dateTime);
+            })
                 .InstancePerLifetimeScope()
                 .AsSelf()
                 .AsImplementedInterfaces();
