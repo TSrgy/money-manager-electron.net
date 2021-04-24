@@ -7,13 +7,13 @@ namespace MoneyManager.Domain.Entities
 {
     public class Asset : AuditableEntity
     {
-        public long Id { get; set; }
-        public string Name { get; set; }
-        public AssetType Type { get; set; }
-        public DateTime StartDate { get; set; }
-        public decimal Value { get; set; }
-        public AssetValueChangeType ValueChangeType { get; set; }
-        public decimal ValueChangeRate { get; set; }
+        public long Id { get; private set; }
+        public string Name { get; init; }
+        public AssetType Type { get; private set; }
+        public DateTime StartDate { get; init; }
+        public decimal Value { get; init; }
+        public AssetValueChangeType ValueChangeType { get; private set; }
+        public decimal ValueChangeRate { get; private set; }
         public string  Notes { get; set; }
     }
     public enum AssetType

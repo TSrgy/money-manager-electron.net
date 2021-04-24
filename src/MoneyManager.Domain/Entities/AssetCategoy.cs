@@ -6,10 +6,10 @@ namespace MoneyManager.Domain.Entities
 {
     public class AssetCategoy
     {
-        public long Id { get; set; }
-        public string Name { get; set; }
-        public AssetCategoy Parent { get; set; }
-        public double Allocation { get; set; }
-        public int SortOrder { get; set; }
+        public long Id { get; private set; }
+        public string Name { get; private set; }
+        public AssetCategoy Parent { get; private set; }
+        public double Allocation { get; private set; }
+        public int SortOrder { get; private set; }
     }
 }
