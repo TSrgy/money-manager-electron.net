@@ -1,17 +1,16 @@
-﻿using MediatR;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using MediatR;
 
 namespace MoneyManager.Application.Common.Behaviours
 {
     public class RequestPerformanceBehaviour<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
     {
         private readonly Stopwatch _timer;
-        //private readonly ILogger<TRequest> _logger;
 
         public RequestPerformanceBehaviour()
         {
@@ -31,8 +30,6 @@ namespace MoneyManager.Application.Common.Behaviours
             if (elapsedMilliseconds > 500)
             {
                 var requestName = typeof(TRequest).Name;
-
-
             }
 
             return response;

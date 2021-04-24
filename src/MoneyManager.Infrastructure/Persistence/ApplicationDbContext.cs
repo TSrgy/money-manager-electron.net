@@ -1,14 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.Reflection;
+using System.Threading;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using MoneyManager.Application.Common.Interfaces;
 using MoneyManager.Domain.Common;
 using MoneyManager.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Reflection;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace MoneyManager.Infrastructure.Persistence
 {
@@ -16,16 +13,18 @@ namespace MoneyManager.Infrastructure.Persistence
     {
         private readonly IDateTime _dateTime;
 
-        public DbSet<Account> Accounts { get; set; }
-        public DbSet<Asset> Assets { get; set; }
-
         public ApplicationDbContext(
             DbContextOptions options,
-            IDateTime dateTime) : base(options)
+            IDateTime dateTime)
+            : base(options)
         {
-            //Database.EnsureCreated();
+            // Database.EnsureCreated();
             _dateTime = dateTime;
         }
+
+        public DbSet<Account> Accounts { get; set; }
+
+        public DbSet<Asset> Assets { get; set; }
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
         {

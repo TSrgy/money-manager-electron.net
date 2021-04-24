@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using ElectronNET.API;
@@ -9,7 +10,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MoneyManager.Application;
 using MoneyManager.Infrastructure;
-using System.Threading.Tasks;
 
 namespace ElectronApp
 {
@@ -21,6 +21,7 @@ namespace ElectronApp
         }
 
         public IConfiguration Configuration { get; }
+
         public ILifetimeScope AutofacContainer { get; private set; }
 
         // This is the default if you don't have an environment specific method.

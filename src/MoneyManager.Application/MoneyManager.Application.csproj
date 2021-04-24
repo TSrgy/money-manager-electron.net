@@ -1,21 +1,26 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net5.0</TargetFramework>
+		<CodeAnalysisRuleSet>..\..\MoneyManager.ruleset</CodeAnalysisRuleSet>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Autofac" Version="6.1.0" />
-    <PackageReference Include="AutoMapper" Version="10.1.1" />
-    <PackageReference Include="AutoMapper.Contrib.Autofac.DependencyInjection" Version="5.3.0" />
-    <PackageReference Include="FluentValidation" Version="10.0.4" />
-    <PackageReference Include="MediatR" Version="9.0.0" />
-    <PackageReference Include="MediatR.Extensions.Autofac.DependencyInjection" Version="7.1.0" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.5" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Autofac" Version="6.1.0" />
+		<PackageReference Include="AutoMapper" Version="10.1.1" />
+		<PackageReference Include="AutoMapper.Contrib.Autofac.DependencyInjection" Version="5.3.0" />
+		<PackageReference Include="FluentValidation" Version="10.0.4" />
+		<PackageReference Include="MediatR" Version="9.0.0" />
+		<PackageReference Include="MediatR.Extensions.Autofac.DependencyInjection" Version="7.1.0" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.5" />
+		<PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+	</ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\MoneyManager.Domain\MoneyManager.Domain.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\MoneyManager.Domain\MoneyManager.Domain.csproj" />
+	</ItemGroup>
 
 </Project>

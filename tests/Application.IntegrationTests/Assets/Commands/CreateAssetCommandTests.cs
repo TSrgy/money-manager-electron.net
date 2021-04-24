@@ -1,8 +1,8 @@
-﻿using FluentAssertions;
+﻿using System;
+using System.Threading.Tasks;
+using FluentAssertions;
 using MoneyManager.Application.Assets.Commands.CreateAsset;
 using MoneyManager.Domain.Entities;
-using System;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace Application.IntegrationTests.Assets.Commands
@@ -11,7 +11,7 @@ namespace Application.IntegrationTests.Assets.Commands
     public class CreateAssetCommandTests : TestBase
     {
         public CreateAssetCommandTests(DatabaseFixture fixture)
-            :base(fixture)
+            : base(fixture)
         {
         }
 

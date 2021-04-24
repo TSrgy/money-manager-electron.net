@@ -1,7 +1,7 @@
-﻿using AutoMapper;
-using System;
+﻿using System;
 using System.Linq;
 using System.Reflection;
+using AutoMapper;
 
 namespace MoneyManager.Application.Common.Mappings
 {
@@ -27,7 +27,6 @@ namespace MoneyManager.Application.Common.Mappings
                     ?? type.GetInterface("IMapFrom`1").GetMethod("Mapping");
 
                 methodInfo?.Invoke(instance, new object[] { this });
-
             }
         }
     }

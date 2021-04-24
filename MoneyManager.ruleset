@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RuleSet Name="New Rule Set" Description=" " ToolsVersion="16.0">
+  <Rules AnalyzerId="StyleCop.Analyzers" RuleNamespace="StyleCop.Analyzers">
+    <Rule Id="SA1028" Action="Error" />
+    <Rule Id="SA1101" Action="None" />
+    <Rule Id="SA1200" Action="None" />
+    <Rule Id="SA1202" Action="Error" />
+    <Rule Id="SA1208" Action="Error" />
+    <Rule Id="SA1309" Action="None" />
+    <Rule Id="SA1413" Action="None" />
+    <Rule Id="SA1517" Action="Error" />
+    <Rule Id="SA1600" Action="Info" />
+    <Rule Id="SA1633" Action="None" />
+    <Rule Id="SX1101" Action="Warning" />
+    <Rule Id="SX1309" Action="Warning" />
+    <Rule Id="SX1309S" Action="Warning" />
+  </Rules>
+</RuleSet>
