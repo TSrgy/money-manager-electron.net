@@ -1,7 +1,7 @@
 import "./App.css";
 
 import { Breadcrumb, Layout, Menu } from "antd";
-import { DesktopOutlined, FileOutlined, FolderOutlined, TeamOutlined, UserOutlined } from "@ant-design/icons";
+import { FolderOutlined, TeamOutlined, UserOutlined } from "@ant-design/icons";
 
 import React from "react";
 import { SideMenu } from "./SideMenu";
@@ -11,7 +11,7 @@ const { Header, Content } = Layout;
 const App: React.FC = () => {
     return (
         <Layout style={{ minHeight: "100vh" }}>
-            <SideMenu/>
+            <SideMenu />
             <Layout className="site-layout">
                 <Header className="site-layout-background" style={{ padding: 0 }} />
                 <Content style={{ margin: "0 16px" }}>
@@ -26,6 +26,6 @@ const App: React.FC = () => {
             </Layout>
         </Layout>
     );
-}
+};
 
-export default App
+export default App;

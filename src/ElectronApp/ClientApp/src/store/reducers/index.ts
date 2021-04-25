@@ -6,8 +6,8 @@ const initialState: AccountsState = {
     accounts: [
         {
             id: 1,
-            title: "Test 1",
-        },
+            title: "Test 1"
+        }
     ],
     selectedAccount: 1
 };
@@ -17,7 +17,7 @@ const accountsReducer = (state: AccountsState = initialState, action: AccountAct
         case actionTypes.ACCOUNT_SELECTED:
             return {
                 ...state,
-                selectedAccount: action.account.id,
+                selectedAccount: action.account.id
             };
     }
     return state;

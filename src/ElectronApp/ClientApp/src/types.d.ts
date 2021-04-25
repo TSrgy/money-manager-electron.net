@@ -1,14 +1,14 @@
 interface IAccount {
-    id: number
-    title: string
+    id: number;
+    title: string;
 }
 
 type AccountsState = {
-    accounts: IAccount[]
-    selectedAccount: number
-}
+    accounts: IAccount[];
+    selectedAccount: number;
+};
 
 type AccountAction = {
-    type: string
-    account: IAccount
-  }
+    type: string;
+    account: IAccount;
+};
