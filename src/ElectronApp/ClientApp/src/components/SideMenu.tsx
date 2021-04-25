@@ -7,9 +7,7 @@ import { selectAccount } from "../store/actions";
 
 const { Sider } = Layout;
 
-
 const { SubMenu } = Menu;
-
 
 export const SideMenu: React.FC = () => {
     const [collapsed, setCollapsed] = useState(false);
@@ -17,10 +15,12 @@ export const SideMenu: React.FC = () => {
     const selectedAccountId: number = useSelector((state: AccountsState) => state.selectedAccount);
 
     const renderAccountsMenu = () => {
-        return accounts.map((account: IAccount) => <Menu.Item key={account.id} isSelected={selectedAccountId === account.id} onSelect={()=> selectAccount(account)}>{account.title}</Menu.Item>);
+        return accounts.map((account: IAccount) => (
+            <Menu.Item key={account.id} isSelected={selectedAccountId === account.id} onSelect={() => selectAccount(account)}>
+                {account.title}
+            </Menu.Item>
+        ));
     };
-
-   
 
     return (
         <Sider collapsible collapsed={collapsed} onCollapse={setCollapsed}>
