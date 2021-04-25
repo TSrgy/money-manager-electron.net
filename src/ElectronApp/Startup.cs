@@ -41,6 +41,8 @@ namespace ElectronApp
             {
                 configuration.RootPath = "ClientApp/build";
             });
+
+            services.AddOpenApiDocument();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -50,6 +52,9 @@ namespace ElectronApp
 
             if (env.IsDevelopment())
             {
+                // Register the Swagger generator and the Swagger UI middlewares
+                app.UseOpenApi();
+                app.UseSwaggerUi3();
                 app.UseDeveloperExceptionPage();
             }
             else

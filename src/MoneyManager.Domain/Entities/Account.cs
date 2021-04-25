@@ -7,7 +7,7 @@ namespace MoneyManager.Domain.Entities
     {
         public long Id { get; private set; }
 
-        public string Name { get; private set; }
+        public string Name { get; init; }
 
         public AccountType Type { get; private set; }
 
