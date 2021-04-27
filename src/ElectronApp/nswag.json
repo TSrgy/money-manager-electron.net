@@ -58,7 +58,7 @@
   },
   "codeGenerators": {
     "openApiToTypeScriptClient": {
-      "className": "{controller}Client",
+      "className": "{controller}ApiClient",
       "moduleName": "",
       "namespace": "",
       "typeScriptVersion": 2.7,
@@ -87,7 +87,7 @@
       "useTransformOptionsMethod": false,
       "useTransformResultMethod": false,
       "generateDtoTypes": true,
-      "operationGenerationMode": "MultipleClientsFromOperationId",
+      "operationGenerationMode": "SingleClientFromOperationId",
       "markOptionalProperties": true,
       "generateCloneMethod": false,
       "typeStyle": "Class",

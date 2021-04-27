@@ -1,9 +1,17 @@
-import { DesktopOutlined, FileOutlined, FolderOutlined, TeamOutlined, UserOutlined } from "@ant-design/icons";
 import { Layout, Menu } from "antd";
-import React, { Dispatch, useState } from "react";
-import { shallowEqual, useDispatch, useSelector } from "react-redux";
+import React, { useEffect, useState } from "react";
+import {
+    createFetchAccountsAction,
+    createFetchAccountsFailedAction,
+    createFetchAccountsSuccessAction,
+    createSelectAccountAction
+} from "../store/accounts/actionCreators";
+import { useDispatch, useSelector } from "react-redux";
 
-import { selectAccount } from "../store/actions";
+import { Account } from "../store/accounts/types";
+import { ApiClient } from "../ApiClient";
+import { AppState } from "../store";
+import { FolderOutlined } from "@ant-design/icons";
 
 const { Sider } = Layout;
 
@@ -11,12 +19,37 @@ const { SubMenu } = Menu;
 
 export const SideMenu: React.FC = () => {
     const [collapsed, setCollapsed] = useState(false);
-    const accounts: readonly IAccount[] = useSelector((state: AccountsState) => state.accounts);
-    const selectedAccountId: number = useSelector((state: AccountsState) => state.selectedAccount);
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(createFetchAccountsAction());
+        const client = new ApiClient();
+        client
+            .accounts_Get()
+            .then((data) => {
+                let payload: Account[] = [];
+                if (data.accounts) {
+                    payload = data.accounts.map((x) => {
+                        return new Account(x.id, x.name);
+                    });
+                }
+                dispatch(createFetchAccountsSuccessAction(payload));
+            })
+            .catch(() => {
+                dispatch(createFetchAccountsFailedAction());
+            });
+    }, [dispatch]);
+
+    const accounts: Account[] = useSelector((state: AppState) => state.accounts.accounts);
+
+    const selectedAccountId = useSelector((state: AppState) => state.accounts.selectedAccountdId);
+
+    const dispatchSelectAccount = (accountId: number) => dispatch(createSelectAccountAction(accountId));
 
     const renderAccountsMenu = () => {
-        return accounts.map((account: IAccount) => (
-            <Menu.Item key={account.id} isSelected={selectedAccountId === account.id} onSelect={() => selectAccount(account)}>
+        return accounts.map((account: Account) => (
+            <Menu.Item key={account.id} isSelected={selectedAccountId === account.id} onClick={() => dispatchSelectAccount(account.id)}>
                 {account.title}
             </Menu.Item>
         ));
