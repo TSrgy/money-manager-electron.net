@@ -7,7 +7,7 @@
 //----------------------
 // ReSharper disable InconsistentNaming
 
-export class AccountsClient {
+export class ApiClient {
     private http: { fetch(url: RequestInfo, init?: RequestInit): Promise<Response> };
     private baseUrl: string;
     protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
@@ -17,7 +17,7 @@ export class AccountsClient {
         this.baseUrl = baseUrl !== undefined && baseUrl !== null ? baseUrl : "";
     }
 
-    get(signal?: AbortSignal | undefined): Promise<AccountsVm> {
+    accounts_Get(signal?: AbortSignal | undefined): Promise<AccountsVm> {
         let url_ = this.baseUrl + "/api/Accounts";
         url_ = url_.replace(/[?&]$/, "");
 
@@ -30,11 +30,11 @@ export class AccountsClient {
         };
 
         return this.http.fetch(url_, options_).then((_response: Response) => {
-            return this.processGet(_response);
+            return this.processAccounts_Get(_response);
         });
     }
 
-    protected processGet(response: Response): Promise<AccountsVm> {
+    protected processAccounts_Get(response: Response): Promise<AccountsVm> {
         const status = response.status;
         let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
@@ -98,8 +98,8 @@ export interface IAccountsVm {
 }
 
 export class AccountDto implements IAccountDto {
-    id?: number;
-    name?: string | undefined;
+    id!: number;
+    name!: string;
 
     constructor(data?: IAccountDto) {
         if (data) {
@@ -133,8 +133,8 @@ export class AccountDto implements IAccountDto {
 }
 
 export interface IAccountDto {
-    id?: number;
-    name?: string | undefined;
+    id: number;
+    name: string;
 }
 
 export class ApiException extends Error {
