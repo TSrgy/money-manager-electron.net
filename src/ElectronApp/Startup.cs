@@ -1,6 +1,5 @@
 using System.Threading.Tasks;
 using Autofac;
-using Autofac.Extensions.DependencyInjection;
 using ElectronNET.API;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -21,8 +20,6 @@ namespace ElectronApp
         }
 
         public IConfiguration Configuration { get; }
-
-        public ILifetimeScope AutofacContainer { get; private set; }
 
         // This is the default if you don't have an environment specific method.
         public void ConfigureContainer(ContainerBuilder builder)
@@ -48,8 +45,6 @@ namespace ElectronApp
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            AutofacContainer = app.ApplicationServices.GetAutofacRoot();
-
             if (env.IsDevelopment())
             {
                 // Register the Swagger generator and the Swagger UI middlewares
@@ -59,7 +54,7 @@ namespace ElectronApp
             }
             else
             {
-                app.UseExceptionHandler("/Error");
+                app.UseExceptionHandler("/ErrorPage");
             }
 
             app.UseStaticFiles();
