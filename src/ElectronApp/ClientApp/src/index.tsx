@@ -1,4 +1,5 @@
 import "./index.css";
+import "./i18n/config";
 
 import App from "./components/App";
 import { Provider } from "react-redux";

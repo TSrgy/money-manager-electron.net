@@ -12,6 +12,7 @@ import { Account } from "../store/accounts/types";
 import { ApiClient } from "../ApiClient";
 import { AppState } from "../store";
 import { FolderOutlined } from "@ant-design/icons";
+import { useTranslation } from "react-i18next";
 
 const { Sider } = Layout;
 
@@ -20,6 +21,7 @@ const { SubMenu } = Menu;
 export const SideMenu: React.FC = () => {
     const [collapsed, setCollapsed] = useState(false);
 
+    const { t } = useTranslation();
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -56,12 +58,11 @@ export const SideMenu: React.FC = () => {
     };
 
     return (
-        <Sider collapsible collapsed={collapsed} onCollapse={setCollapsed}>
+        <Sider theme="light" collapsible collapsed={collapsed} onCollapse={setCollapsed}>
             <div className="logo" />
-            <Menu theme="dark" defaultSelectedKeys={["1"]} mode="inline">
-                <SubMenu title="Accounts" key="accounts" icon={<FolderOutlined />}>
+            <Menu defaultSelectedKeys={["1"]} mode="inline">
+                <SubMenu title={t("bankAccounts")} key="accounts" icon={<FolderOutlined />}>
                     {renderAccountsMenu()}
-                    <Menu.Item key="_create">Create new</Menu.Item>
                 </SubMenu>
             </Menu>
         </Sider>
