@@ -3,20 +3,17 @@ import React, { useEffect, useState } from "react";
 import {
     createFetchAccountsAction,
     createFetchAccountsFailedAction,
-    createFetchAccountsSuccessAction,
-    createSelectAccountAction
+    createFetchAccountsSuccessAction
 } from "../store/accounts/actionCreators";
-import { useDispatch, useSelector } from "react-redux";
 
 import { Account } from "../store/accounts/types";
 import { ApiClient } from "../ApiClient";
-import { AppState } from "../store";
 import { FolderOutlined } from "@ant-design/icons";
+import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { useTranslation } from "react-i18next";
 
 const { Sider } = Layout;
-
-const { SubMenu } = Menu;
 
 export const SideMenu: React.FC = () => {
     const [collapsed, setCollapsed] = useState(false);
@@ -43,27 +40,13 @@ export const SideMenu: React.FC = () => {
             });
     }, [dispatch]);
 
-    const accounts: Account[] = useSelector((state: AppState) => state.accounts.accounts);
-
-    const selectedAccountId = useSelector((state: AppState) => state.accounts.selectedAccountdId);
-
-    const dispatchSelectAccount = (accountId: number) => dispatch(createSelectAccountAction(accountId));
-
-    const renderAccountsMenu = () => {
-        return accounts.map((account: Account) => (
-            <Menu.Item key={account.id} isSelected={selectedAccountId === account.id} onClick={() => dispatchSelectAccount(account.id)}>
-                {account.title}
-            </Menu.Item>
-        ));
-    };
-
     return (
         <Sider theme="light" collapsible collapsed={collapsed} onCollapse={setCollapsed}>
             <div className="logo" />
-            <Menu defaultSelectedKeys={["1"]} mode="inline">
-                <SubMenu title={t("bankAccounts")} key="accounts" icon={<FolderOutlined />}>
-                    {renderAccountsMenu()}
-                </SubMenu>
+            <Menu defaultSelectedKeys={["accounts"]} mode="inline">
+                <Menu.Item key="accounts" icon={<FolderOutlined />}>
+                    <Link to="/accounts">{t("bankAccounts")}</Link>
+                </Menu.Item>
             </Menu>
         </Sider>
     );
