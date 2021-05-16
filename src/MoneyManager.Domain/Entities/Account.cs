@@ -5,6 +5,19 @@ namespace MoneyManager.Domain.Entities
 {
     public class Account : AuditableEntity
     {
+        public Account(string name, AccountType accountType, decimal initialBalance, Currency currency)
+        {
+            Name = name;
+            Type = accountType;
+            InitialBalance = initialBalance;
+            Currency = currency;
+            Status = AccountStatus.Open;
+        }
+
+        private Account()
+        {
+        }
+
         public long Id { get; private set; }
 
         public string Name { get; init; }
@@ -15,7 +28,7 @@ namespace MoneyManager.Domain.Entities
 
         public decimal InitialBalance { get; private set; }
 
-        public bool IsFavorite { get; private set; }
+        public bool IsFavorite { get; set; }
 
         public Currency Currency { get; private set; }
 

@@ -1,4 +1,5 @@
 {
     "bankAccounts": "Bank accounts",
-    "addAccount": "Add bank account"
+    "addAccount": "Add bank account",
+    "accountName": "Name"
 }

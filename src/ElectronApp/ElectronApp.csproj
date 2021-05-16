@@ -14,6 +14,10 @@
 		<PackageReference Include="Autofac.Extensions.DependencyInjection" Version="7.1.0" />
 		<PackageReference Include="ElectronNET.API" Version="11.5.1" />
 		<PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="5.0.5" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.6">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
 		<PackageReference Include="NSwag.AspNetCore" Version="13.10.9" />
 		<PackageReference Include="NSwag.MSBuild" Version="13.10.9">
 			<PrivateAssets>all</PrivateAssets>
@@ -63,8 +67,7 @@
 	</Target>
 
 	<Target Name="NSwag" AfterTargets="Build">
-		<Exec EnvironmentVariables="ASPNETCORE_ENVIRONMENT=Development"
-			  Command="$(NSwagExe_Net50) run /variables:Configuration=$(Configuration)" />
+		<Exec EnvironmentVariables="ASPNETCORE_ENVIRONMENT=Development" Command="$(NSwagExe_Net50) run /variables:Configuration=$(Configuration)" />
 	</Target>
 	<ItemGroup>
 		<Content Update="electron.manifest.json">

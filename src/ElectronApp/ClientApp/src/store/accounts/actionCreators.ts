@@ -9,6 +9,26 @@ export const createSelectAccountAction = (accountId: number) => {
     } as const;
 };
 
+export const createAccountAction = (name: string) => {
+    return {
+        type: "@@accounts/CREATE_ACCOUNT",
+        paylod: name
+    } as const;
+};
+
+export const createAccountSuccessAction = (account: Account) => {
+    return {
+        type: "@@accounts/CREATE_ACCOUNT_SUCCESS",
+        createdAccount: account
+    } as const;
+};
+
+export const createAccountFailedAction = () => {
+    return {
+        type: "@@accounts/CREATE_ACCOUNT_FAILED"
+    } as const;
+};
+
 export const createFetchAccountsAction = () => {
     return {
         type: "@@accounts/FETCH_ACCOUNTS"

@@ -11,6 +11,8 @@ namespace MoneyManager.Application.Common.Interfaces
 
         DbSet<Asset> Assets { get; set; }
 
+        DbSet<Currency> Currencies { get; set; }
+
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
     }
 }

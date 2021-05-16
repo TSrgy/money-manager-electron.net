@@ -25,6 +25,22 @@ const reducer: Reducer<AccountsState> = (state: AccountsState = initialState, ac
                 ...state,
                 loading: false
             };
+        case "@@accounts/CREATE_ACCOUNT":
+            return {
+                ...state,
+                loading: true
+            };
+        case "@@accounts/CREATE_ACCOUNT_SUCCESS":
+            return {
+                ...state,
+                accounts: [...state.accounts, action.createdAccount],
+                loading: false
+            };
+        case "@@accounts/CREATE_ACCOUNT_FAILED":
+            return {
+                ...state,
+                loading: false
+            };
         case "@@accounts/SELECT_ACCOUNT":
             return {
                 ...state,
