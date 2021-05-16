@@ -26,6 +26,8 @@ namespace MoneyManager.Infrastructure.Persistence
 
         public DbSet<Asset> Assets { get; set; }
 
+        public DbSet<Currency> Currencies { get; set; }
+
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
         {
             foreach (var entry in ChangeTracker.Entries<AuditableEntity>())

@@ -1,4 +1,5 @@
-﻿using MoneyManager.Domain.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using MoneyManager.Domain.Entities;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -8,17 +9,35 @@ namespace MoneyManager.Infrastructure.Persistence
     {
         public static async Task SeedSampleDataAsync(ApplicationDbContext context)
         {
-            // Seed, if necessary
-            if (!context.Accounts.Any())
+            if (!await context.Currencies.AnyAsync())
             {
-                context.Accounts.Add(new Account
+                await context.Currencies.AddRangeAsync(new[]
                 {
-                    Name = "First",
+                    new Currency("Euro", "EUR")
+                    {
+                        PfxSymbol = "€"
+                    },
+                    new Currency("US Dollar", "USD")
+                    {
+                        PfxSymbol = "$"
+                    },
+                    new Currency("Russian Ruble", "RUB")
+                    {
+                        SfxSymbol = "р"
+                    }
                 });
 
-                context.Accounts.Add(new Account
+                await context.SaveChangesAsync();
+            }
+
+            var usd = await context.Currencies.SingleAsync(x => x.TickerSymbol == "USD");
+
+            if (!context.Accounts.Any())
+            {
+                await context.Accounts.AddRangeAsync(new[]
                 {
-                    Name = "Second",
+                    new Account("First", AccountType.Checking, 0, usd),
+                    new Account("Second", AccountType.Checking, 100, usd)
                 });
 
                 await context.SaveChangesAsync();

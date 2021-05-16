@@ -51,6 +51,83 @@ export class ApiClient {
         }
         return Promise.resolve<AccountsVm>(<any>null);
     }
+
+    accounts_Create(command: CreateAccountCommand, signal?: AbortSignal | undefined): Promise<number> {
+        let url_ = this.baseUrl + "/api/Accounts";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(command);
+
+        let options_ = <RequestInit>{
+            body: content_,
+            method: "POST",
+            signal,
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            }
+        };
+
+        return this.http.fetch(url_, options_).then((_response: Response) => {
+            return this.processAccounts_Create(_response);
+        });
+    }
+
+    protected processAccounts_Create(response: Response): Promise<number> {
+        const status = response.status;
+        let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
+        if (status === 200) {
+            return response.text().then((_responseText) => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 !== undefined ? resultData200 : <any>null;
+            return result200;
+            });
+        } else if (status !== 200 && status !== 204) {
+            return response.text().then((_responseText) => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            });
+        }
+        return Promise.resolve<number>(<any>null);
+    }
+
+    accounts_GetById(id: number, signal?: AbortSignal | undefined): Promise<AccountDto> {
+        let url_ = this.baseUrl + "/api/Accounts/{id}";
+        if (id === undefined || id === null)
+            throw new Error("The parameter 'id' must be defined.");
+        url_ = url_.replace("{id}", encodeURIComponent("" + id));
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ = <RequestInit>{
+            method: "GET",
+            signal,
+            headers: {
+                "Accept": "application/json"
+            }
+        };
+
+        return this.http.fetch(url_, options_).then((_response: Response) => {
+            return this.processAccounts_GetById(_response);
+        });
+    }
+
+    protected processAccounts_GetById(response: Response): Promise<AccountDto> {
+        const status = response.status;
+        let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
+        if (status === 200) {
+            return response.text().then((_responseText) => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = AccountDto.fromJS(resultData200);
+            return result200;
+            });
+        } else if (status !== 200 && status !== 204) {
+            return response.text().then((_responseText) => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            });
+        }
+        return Promise.resolve<AccountDto>(<any>null);
+    }
 }
 
 export class AccountsVm implements IAccountsVm {
@@ -135,6 +212,65 @@ export class AccountDto implements IAccountDto {
 export interface IAccountDto {
     id: number;
     name: string;
+}
+
+export class CreateAccountCommand implements ICreateAccountCommand {
+    name?: string | undefined;
+    accountType?: AccountType;
+    initialBalance?: number;
+    notes?: string | undefined;
+    currencyId?: number;
+
+    constructor(data?: ICreateAccountCommand) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.name = _data["name"];
+            this.accountType = _data["accountType"];
+            this.initialBalance = _data["initialBalance"];
+            this.notes = _data["notes"];
+            this.currencyId = _data["currencyId"];
+        }
+    }
+
+    static fromJS(data: any): CreateAccountCommand {
+        data = typeof data === 'object' ? data : {};
+        let result = new CreateAccountCommand();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["name"] = this.name;
+        data["accountType"] = this.accountType;
+        data["initialBalance"] = this.initialBalance;
+        data["notes"] = this.notes;
+        data["currencyId"] = this.currencyId;
+        return data; 
+    }
+}
+
+export interface ICreateAccountCommand {
+    name?: string | undefined;
+    accountType?: AccountType;
+    initialBalance?: number;
+    notes?: string | undefined;
+    currencyId?: number;
+}
+
+export enum AccountType {
+    Checking = 0,
+    Term = 1,
+    Investment = 2,
+    CreditCard = 3,
 }
 
 export class ApiException extends Error {
