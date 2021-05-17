@@ -11,13 +11,6 @@ import { SideMenu } from "./SideMenu";
 const { Content } = Layout;
 
 const App: React.FC = () => {
-    // const accounts = useSelector((state: AppState) => state.accounts.accounts);
-    // const selectedAccountdId = useSelector((state: AppState) => state.accounts.selectedAccountdId);
-    // let selectedAccount: Account | undefined | null;
-    // if (selectedAccountdId) {
-    //     selectedAccount = accounts.find((a) => a.id === selectedAccountdId);
-    // }
-
     return (
         <Layout style={{ minHeight: "100vh" }}>
             <HeaderTools />
