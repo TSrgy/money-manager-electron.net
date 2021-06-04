@@ -1,6 +1,4 @@
-import "./App.css";
-
-import { Route, Switch } from "react-router-dom";
+import { Redirect, Route, Switch } from "react-router-dom";
 
 import { AccountsPage } from "./accounts/AccountsPage";
 import { HeaderTools } from "./HeaderTools";
@@ -18,6 +16,9 @@ const App: React.FC = () => {
                 <SideMenu />
                 <Content style={{ margin: "0 16px" }}>
                     <Switch>
+                        <Route exact path="/">
+                            <Redirect to="/accounts" />
+                        </Route>
                         <Route path="/accounts">
                             <AccountsPage />
                         </Route>

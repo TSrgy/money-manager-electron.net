@@ -41,11 +41,6 @@ const reducer: Reducer<AccountsState> = (state: AccountsState = initialState, ac
                 ...state,
                 loading: false
             };
-        case "@@accounts/SELECT_ACCOUNT":
-            return {
-                ...state,
-                selectedAccountdId: action.payload
-            };
         default:
             return state;
     }

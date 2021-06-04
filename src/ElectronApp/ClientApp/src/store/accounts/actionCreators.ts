@@ -2,13 +2,6 @@
 
 import { Account } from "./types";
 
-export const createSelectAccountAction = (accountId: number) => {
-    return {
-        type: "@@accounts/SELECT_ACCOUNT",
-        payload: accountId
-    } as const;
-};
-
 export const createAccountAction = (name: string) => {
     return {
         type: "@@accounts/CREATE_ACCOUNT",
