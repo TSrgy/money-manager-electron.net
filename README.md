@@ -9,7 +9,7 @@
 
 ## Desktop application
 
-[About the desktop application](src/electronApp/README.md)
+[About the desktop application](src/ElectronApp/README.md)
 
 ## Database Migrations
 
