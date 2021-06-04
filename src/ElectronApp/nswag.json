@@ -1,6 +1,6 @@
 {
   "runtime": "Net50",
-  "defaultVariables": null,
+  "defaultVariables": "Configuration=Debug",
   "documentGenerator": {
     "aspNetCoreToOpenApi": {
       "project": "ElectronApp.csproj",
@@ -9,7 +9,7 @@
       "runtime": null,
       "targetFramework": null,
       "noBuild": true,
-      "msBuildOutputPath": null,
+      "msBuildOutputPath": "$(OutputPath)",
       "verbose": true,
       "workingDirectory": null,
       "requireParametersWithoutDefault": false,

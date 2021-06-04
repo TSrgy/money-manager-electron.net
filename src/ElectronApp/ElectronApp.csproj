@@ -67,16 +67,11 @@
 	</Target>
 
 	<Target Name="NSwag" AfterTargets="Build">
-		<Exec EnvironmentVariables="ASPNETCORE_ENVIRONMENT=Development" Command="$(NSwagExe_Net50) run /variables:Configuration=$(Configuration)" />
+		<Exec EnvironmentVariables="ASPNETCORE_ENVIRONMENT=Development" Command="$(NSwagExe_Net50) run /variables:Configuration=$(Configuration),OutputPath=$(OutputPath)" />
 	</Target>
 	<ItemGroup>
 		<Content Update="electron.manifest.json">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</Content>
-	</ItemGroup>
-	<ItemGroup>
-		<None Update="dev.db">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</None>
 	</ItemGroup>
 </Project>
