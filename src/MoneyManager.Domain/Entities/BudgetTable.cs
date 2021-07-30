@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace MoneyManager.Domain.Entities
+﻿namespace MoneyManager.Domain.Entities
 {
     public class BudgetTable
     {
