@@ -1,4 +1,4 @@
-import { Account } from "../../store/accounts/types";
+import { Account } from "../../store/accountsSlice";
 import React from "react";
 
 interface IProps {

@@ -1,10 +1,8 @@
-import { AccountType, ApiClient, CreateAccountCommand } from "../../ApiClient";
 import { Form, Input } from "antd";
-import { createAccountAction, createAccountFailedAction, createAccountSuccessAction } from "../../store/accounts/actionCreators";
 
-import { Account } from "../../store/accounts/types";
 import Modal from "antd/lib/modal/Modal";
 import React from "react";
+import { createAccount } from "../../store/accountsSlice";
 import { useDispatch } from "react-redux";
 import { useTranslation } from "react-i18next";
 
@@ -26,25 +24,16 @@ export const AccountCreateForm: React.FC<IProps> = ({ visible, onReadyToClose })
         const formFields = await form.validateFields();
 
         const accountName = formFields.name;
-        dispatch(createAccountAction(accountName));
-        try {
-            const command = new CreateAccountCommand({
-                name: accountName,
-                accountType: AccountType.Checking,
-                currencyId: 1,
-                initialBalance: 0,
-                notes: ""
-            });
 
-            const client = new ApiClient();
-            const accountId = await client.accounts_Create(command);
-            const account = await client.accounts_GetById(accountId);
-            dispatch(createAccountSuccessAction(new Account(account.id, account.name)));
-            form.resetFields();
-            onReadyToClose(true);
-        } catch (e) {
-            dispatch(createAccountFailedAction());
-        }
+        dispatch(
+            createAccount({
+                accountName: accountName,
+                callback: () => {
+                    form.resetFields();
+                    onReadyToClose(true);
+                }
+            })
+        );
     };
 
     return (
