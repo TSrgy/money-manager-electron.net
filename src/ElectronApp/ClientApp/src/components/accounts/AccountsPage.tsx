@@ -1,9 +1,8 @@
+import { Account, selectAllAccounts } from "../../store/accountsSlice";
 import { Card, Col, PageHeader, Row } from "antd";
 import { Link, matchPath, useHistory, useLocation, useRouteMatch } from "react-router-dom";
 
-import { Account } from "../../store/accounts/types";
 import { AccountView } from "./AccountView";
-import { AppState } from "../../store";
 import React from "react";
 import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
@@ -12,7 +11,7 @@ export const AccountsPage: React.FC = () => {
     const { t } = useTranslation();
     const match = useRouteMatch();
     const accountPath = `${match.path}/:accountId`;
-    const accounts = useSelector((state: AppState) => state.accounts.accounts);
+    const allAccounts = useSelector(selectAllAccounts);
     const history = useHistory();
 
     const location = useLocation();
@@ -20,8 +19,6 @@ export const AccountsPage: React.FC = () => {
         path: accountPath,
         exact: false
     });
-
-    const allAccounts = useSelector((state: AppState) => state.accounts.accounts);
 
     let matchedAccount: Account | undefined;
     if (accountMatch != null) {
@@ -50,7 +47,7 @@ export const AccountsPage: React.FC = () => {
     } else {
         pageContent = (
             <Row gutter={[16, 16]}>
-                {accounts.map((a) => (
+                {allAccounts.map((a) => (
                     <Col key={a.id} span={6}>
                         {renderAccountCard(a)}
                     </Col>

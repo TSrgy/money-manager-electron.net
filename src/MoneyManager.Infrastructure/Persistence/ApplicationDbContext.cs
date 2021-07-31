@@ -2,7 +2,6 @@
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
 using MoneyManager.Application.Common.Interfaces;
 using MoneyManager.Domain.Common;
 using MoneyManager.Domain.Entities;

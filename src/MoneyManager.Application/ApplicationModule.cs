@@ -3,7 +3,6 @@ using System.Reflection;
 using Autofac;
 using AutoMapper.Contrib.Autofac.DependencyInjection;
 using FluentValidation;
-using MediatR;
 using MediatR.Extensions.Autofac.DependencyInjection;
 using MoneyManager.Application.Common.Behaviours;
 

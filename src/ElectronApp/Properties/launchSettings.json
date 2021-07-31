@@ -12,7 +12,7 @@
       "commandName": "Executable",
       "executablePath": "electronize",
       "commandLineArgs": "start",
-      "workingDirectory": ".",
+      "workingDirectory": "$(MSBuildProjectDirectory)",
       "environmentVariables": {
         "IS_ELECTRON": "true"
       }
